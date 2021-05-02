@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.maxkorte.Urlaubsverwaltung.Controller">
+   <top>
+       <MenuBar BorderPane.alignment="CENTER">
+          <menus>
+              <Menu mnemonicParsing="false" text="Datei">
+                 <items>
+                     <MenuItem fx:id="mSchliessen" mnemonicParsing="false" onAction="#handleSchliessen" text="Schließen">
+                         <accelerator>
+                             <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                         </accelerator>
+                     </MenuItem>
+                 </items>
+              </Menu>
+              <Menu mnemonicParsing="false" text="Bearbeiten">
+                 <items>
+                     <MenuItem fx:id="mLoeschen" mnemonicParsing="false" onAction="#handleLoeschen" text="Löschen">
+                         <accelerator>
+                             <KeyCodeCombination alt="UP" code="BACK_SPACE" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                         </accelerator>
+                     </MenuItem>
+                 </items>
+              </Menu>
+          </menus>
+       </MenuBar>
+   </top>
+   <center>
+       <TabPane>
+          <tabs>
+              <Tab closable="false" text="Urlaubsantrag anlegen">
+                 <content>
+                     <GridPane BorderPane.alignment="CENTER">
+                         <columnConstraints>
+                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="231.0" minWidth="10.0" prefWidth="141.0" />
+                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="329.0" minWidth="10.0" prefWidth="329.0" />
+                         </columnConstraints>
+                         <rowConstraints>
+                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                             <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                             <RowConstraints maxHeight="56.0" minHeight="39.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                         </rowConstraints>
+                         <BorderPane.margin>
+                             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                         </BorderPane.margin>
+                         <padding>
+                             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                         </padding>
+                        <children>
+                            <Label text="Vorname:" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                                <font>
+                                    <Font size="18.0" />
+                                </font>
+                                <GridPane.margin>
+                                    <Insets bottom="5.0" left="15.0" right="5.0" top="5.0" />
+                                </GridPane.margin>
+                            </Label>
+                            <Label text="Nachname:" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                <font>
+                                    <Font size="18.0" />
+                                </font>
+                                <GridPane.margin>
+                                    <Insets bottom="5.0" left="15.0" right="5.0" top="5.0" />
+                                </GridPane.margin>
+                            </Label>
+                            <Label text="Urlaubsanfang:" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                <font>
+                                    <Font size="18.0" />
+                                </font>
+                                <GridPane.margin>
+                                    <Insets bottom="5.0" left="15.0" right="5.0" top="5.0" />
+                                </GridPane.margin>
+                            </Label>
+                            <Label text="Urlaubsende:" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                <font>
+                                    <Font size="18.0" />
+                                </font>
+                                <GridPane.margin>
+                                    <Insets bottom="5.0" left="15.0" right="5.0" top="5.0" />
+                                </GridPane.margin>
+                            </Label>
+                            <TextField fx:id="tfVorname" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                <GridPane.margin>
+                                    <Insets bottom="5.0" left="25.0" right="25.0" top="5.0" />
+                                </GridPane.margin>
+                                <font>
+                                    <Font size="18.0" />
+                                </font>
+                            </TextField>
+                            <TextField fx:id="tfNachname" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                <GridPane.margin>
+                                    <Insets bottom="5.0" left="25.0" right="25.0" top="5.0" />
+                                </GridPane.margin>
+                                <font>
+                                    <Font size="18.0" />
+                                </font>
+                            </TextField>
+                            <DatePicker fx:id="dpVon" maxWidth="1.7976931348623157E308" onAction="#pruefeVon" promptText="Datum auswählen..." GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                <GridPane.margin>
+                                    <Insets bottom="5.0" left="25.0" right="25.0" top="5.0" />
+                                </GridPane.margin>
+                            </DatePicker>
+                            <DatePicker fx:id="dpBis" maxWidth="1.7976931348623157E308" onAction="#pruefeBis" promptText="Datum auswählen..." GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                <GridPane.margin>
+                                    <Insets bottom="5.0" left="25.0" right="25.0" top="5.0" />
+                                </GridPane.margin>
+                            </DatePicker>
+                            <Button fx:id="bBeantragen" mnemonicParsing="false" onAction="#handleBBeantragen" prefWidth="160.0" text="Beantragen" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                                <font>
+                                    <Font size="18.0" />
+                                </font>
+                            </Button>
+                        </children>
+                     </GridPane>
+                 </content>
+              </Tab>
+              <Tab text="Urlaubsanträge">
+                 <content>
+                     <TableView fx:id="tUrlaubsantraege" prefHeight="200.0" prefWidth="200.0">
+                         <columns>
+                             <TableColumn fx:id="tcVorname" prefWidth="75.0" text="Vorname" />
+                             <TableColumn fx:id="tcNachname" prefWidth="75.0" text="Nachname" />
+                             <TableColumn fx:id="tcVon" prefWidth="75.0" text="Urlaubsanfang" />
+                             <TableColumn fx:id="tcBis" prefWidth="75.0" text="Urlaubsende" />
+                         </columns>
+                         <columnResizePolicy>
+                             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                         </columnResizePolicy>
+                     </TableView>
+                 </content>
+              </Tab>
+          </tabs>
+       </TabPane>
+   </center>
+</BorderPane>
