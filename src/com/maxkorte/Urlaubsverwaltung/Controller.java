@@ -43,16 +43,19 @@ public class Controller implements Initializable {
         tcBis.setCellValueFactory(new PropertyValueFactory<>("urlaubBis"));
     }
 
-    public  void handleSchliessen(){
+    public void handleSchliessen(){
         System.exit(0);
     }
 
     public void handleLoeschen(){
+        clearBeantragen();
+        tUrlaubsantraege.getItems().clear();
+    }
+    public void clearBeantragen(){
         tfVorname.setText("");
         tfNachname.setText("");
         dpVon.setValue(null);
         dpBis.setValue(null);
-        tUrlaubsantraege.getItems().clear();
     }
 
     public void handleBBeantragen(){
@@ -60,6 +63,8 @@ public class Controller implements Initializable {
                 tfVorname.getText(), tfNachname.getText(), dpVon.getValue(), dpBis.getValue()
         );
         tUrlaubsantraege.getItems().add(a);
+
+        clearBeantragen();
     }
 
     public void pruefeVon(){
